@@ -1,8 +1,8 @@
 //
-//  AppDelegate.swift
+//  AttributeName.swift
 //  WolfGraph
 //
-//  Created by Wolf McNally on 09/13/2018.
+//  Created by Wolf McNally on 9/13/18.
 //  Copyright © 2018 Wolf McNally.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,14 +23,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import UIKit
+import Foundation
+import ExtensibleEnumeratedName
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+public struct AttributeName: ExtensibleEnumeratedName, Codable {
+    public let rawValue: String
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        return true
+    public init(_ rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    // RawRepresentable
+    public init?(rawValue: String) { self.init(rawValue) }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(rawValue)
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        rawValue = try container.decode(String.self)
     }
 }
-

@@ -1,9 +1,11 @@
 # WolfGraph
 
-[![CI Status](https://img.shields.io/travis/ironwolf/WolfGraph.svg?style=flat)](https://travis-ci.org/ironwolf/WolfGraph)
+[![CI Status](https://img.shields.io/travis/wolfmcnally/WolfGraph.svg?style=flat)](https://travis-ci.org/wolfmcnally/WolfGraph)
 [![Version](https://img.shields.io/cocoapods/v/WolfGraph.svg?style=flat)](https://cocoapods.org/pods/WolfGraph)
 [![License](https://img.shields.io/cocoapods/l/WolfGraph.svg?style=flat)](https://cocoapods.org/pods/WolfGraph)
 [![Platform](https://img.shields.io/cocoapods/p/WolfGraph.svg?style=flat)](https://cocoapods.org/pods/WolfGraph)
+
+A Swift-based general graph structure with value semantics.
 
 ## Example
 
@@ -22,7 +24,7 @@ pod 'WolfGraph'
 
 ## Author
 
-ironwolf, wolf@wolfmcnally.com
+Wolf McNally, wolf@wolfmcnally.com
 
 ## License
 

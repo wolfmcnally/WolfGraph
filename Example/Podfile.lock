@@ -1,0 +1,27 @@
+PODS:
+  - ExtensibleEnumeratedName (1.0)
+  - WolfAnyCodable (1.0)
+  - WolfGraph (1.0):
+    - ExtensibleEnumeratedName
+    - WolfAnyCodable
+
+DEPENDENCIES:
+  - WolfGraph (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ExtensibleEnumeratedName
+    - WolfAnyCodable
+
+EXTERNAL SOURCES:
+  WolfGraph:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ExtensibleEnumeratedName: c7979e8290bb7f49b23742d62fee2cd75586b53e
+  WolfAnyCodable: b01694c2c326aed33ecac23eca809a1e3d5c4925
+  WolfGraph: 3280080906ecb07f9b1d34367e38a601ecb45a24
+
+PODFILE CHECKSUM: 2a3553a0d023e1182f2d26e4aa7c27d76c974618
+
+COCOAPODS: 1.6.0.beta.1

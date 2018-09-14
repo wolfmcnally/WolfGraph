@@ -1,0 +1,6 @@
+framework module WolfGraph {
+  umbrella header "WolfGraph-umbrella.h"
+
+  export *
+  module * { export * }
+}

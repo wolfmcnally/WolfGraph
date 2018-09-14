@@ -1,8 +1,8 @@
 //
-//  AppDelegate.swift
+//  ConceptGraph.swift
 //  WolfGraph
 //
-//  Created by Wolf McNally on 09/13/2018.
+//  Created by Wolf McNally on 9/13/18.
 //  Copyright © 2018 Wolf McNally.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,14 +23,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import UIKit
+import Foundation
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+extension AttributeName {
+    public static let concept = AttributeName("concept")
+    public static let relation = AttributeName("relation")
+}
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        return true
+extension Vertex {
+    public var concept: String? {
+        get { return try! attributes.value(for: .concept) }
+        set { attributes.setValue(for: .concept, to: newValue) }
     }
 }
 
+extension Edge {
+    public var relation: String? {
+        get { return try! attributes.value(for: .relation) }
+        set { attributes.setValue(for: .relation, to: newValue) }
+    }
+}

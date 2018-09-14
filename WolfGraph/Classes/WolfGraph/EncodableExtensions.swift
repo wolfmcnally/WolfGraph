@@ -1,8 +1,8 @@
 //
-//  AppDelegate.swift
+//  EncodableExtensions.swift
 //  WolfGraph
 //
-//  Created by Wolf McNally on 09/13/2018.
+//  Created by Wolf McNally on 9/13/18.
 //  Copyright © 2018 Wolf McNally.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,14 +23,14 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import UIKit
+import Foundation
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        return true
+extension Encodable {
+    public func dump() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let data = try! encoder.encode(self)
+        let string = String(data: data, encoding: .utf8)!
+        print(string)
     }
 }
-
