@@ -48,6 +48,20 @@ public struct Graph: Codable {
         inEdges = VertexEdges()
     }
 
+    /// The number of vertices in the graph.
+    ///
+    /// In graph theory, this is known as the graph's *order*.
+    public var vertexCount: Int {
+        return vertices.count
+    }
+
+    /// The number of edges in the graph.
+    ///
+    /// In graph theiry, this is known as the graph's *size*.
+    public var edgeCount: Int {
+        return edges.count
+    }
+
     private mutating func insertInEdge(for edge: Edge) {
         let edgeID = edge.id
         let headID = edge.headID
@@ -58,6 +72,10 @@ public struct Graph: Codable {
         }
     }
 
+    private mutating func removeInEdge(for edge: Edge) {
+        inEdges.removeValue(forKey: edge.headID)
+    }
+
     private mutating func insertOutEdge(for edge: Edge) {
         let edgeID = edge.id
         let tailID = edge.tailID
@@ -66,6 +84,10 @@ public struct Graph: Codable {
         } else {
             outEdges[tailID]!.insert(edgeID)
         }
+    }
+
+    private mutating func removeOutEdge(for edge: Edge) {
+        outEdges.removeValue(forKey: edge.tailID)
     }
 
     public init(from decoder: Decoder) throws {
@@ -148,6 +170,17 @@ public struct Graph: Codable {
         vertices[vertex.id] = vertex
     }
 
+    /// Removes the vertex from the graph, along with all of its incident edges.
+    ///
+    /// Throws if the vertex is unknown.
+    public mutating func remove(_ vertex: Vertex) throws {
+        try checkContains(vertex)
+        for edge in try allEdges(of: vertex) {
+            try remove(edge)
+        }
+        vertices.removeValue(forKey: vertex.id)
+    }
+
     /// Inserts the edge into the graph.
     ///
     /// Throws if attempting to insert a duplicate edge.
@@ -159,6 +192,16 @@ public struct Graph: Codable {
         try checkContains(head(of: edge))
         insertInEdge(for: edge)
         insertOutEdge(for: edge)
+    }
+
+    /// Removes the edge from the graph
+    ///
+    /// Throws if the edge is unknown.
+    public mutating func remove(_ edge: Edge) throws {
+        try checkContains(edge)
+        edges.removeValue(forKey: edge.id)
+        removeInEdge(for: edge)
+        removeOutEdge(for: edge)
     }
 
     //
@@ -243,26 +286,56 @@ public struct Graph: Codable {
         return vertices[edge.headID]!
     }
 
-    /// Returns in in-edges of the vertex.
-    public func inEdges(of vertex: Vertex) throws -> [Edge] {
+    /// Returns the count of in-edges of the vertex.
+    public func inCount(of vertex: Vertex) throws -> Int {
         try checkContains(vertex)
-        return (self.inEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edges [$0]! }
+        return inEdges[vertex.id]?.count ?? 0
+    }
+
+    /// Returns in in-edges of the vertex.
+    public func inEdges(of vertex: Vertex) throws -> Set<Edge> {
+        try checkContains(vertex)
+        let a = (self.inEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edges [$0]! }
+        return Set(a)
+    }
+
+    /// Returns the count of out-edges of the vertex.
+    public func outCount(of vertex: Vertex) throws -> Int {
+        try checkContains(vertex)
+        return outEdges[vertex.id]?.count ?? 0
+    }
+
+    /// Returns the count of all edges contected to the vertex.
+    public func count(of vertex: Vertex) throws -> Int {
+        return try inCount(of: vertex) + outCount(of: vertex)
     }
 
     /// Returns the out-edges of the vertex.
-    public func outEdges(of vertex: Vertex) throws -> [Edge] {
+    public func outEdges(of vertex: Vertex) throws -> Set<Edge> {
         try checkContains(vertex)
-        return (self.outEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edges[$0]! }
+        let a = (self.outEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edges[$0]! }
+        return Set(a)
+    }
+
+    /// Return the set of all edges connected to the vertex.
+    public func allEdges(of vertex: Vertex) throws -> Set<Edge> {
+        return try inEdges(of: vertex).union(outEdges(of: vertex))
     }
 
     /// Returns the predecessors of the vertex.
-    public func predecessors(of vertex: Vertex) throws -> [Vertex] {
-        return try inEdges(of: vertex).map { try self.tail(of: $0) }
+    public func predecessors(of vertex: Vertex) throws -> Set<Vertex> {
+        let a = try inEdges(of: vertex).map { try self.tail(of: $0) }
+        return Set(a)
     }
 
     /// Returns the successors of the vertex.
-    public func successors(of vertex: Vertex) throws -> [Vertex] {
-        return try outEdges(of: vertex).map { try self.head(of: $0) }
+    public func successors(of vertex: Vertex) throws -> Set<Vertex> {
+        let a = try outEdges(of: vertex).map { try self.head(of: $0) }
+        return Set(a)
+    }
+
+    /// Returns the neighbors of the vertex.
+    public func neigbors(of vertex: Vertex) throws -> Set<Vertex> {
+        return try predecessors(of: vertex).union(successors(of: vertex))
     }
 }
-
