@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'WolfGraph'
-    s.version          = '0.1.0'
+    s.version          = '0.1.1'
     s.summary          = 'A Swift-based general graph structure with value semantics.'
 
     s.homepage         = 'https://github.com/wolfmcnally/WolfGraph'
