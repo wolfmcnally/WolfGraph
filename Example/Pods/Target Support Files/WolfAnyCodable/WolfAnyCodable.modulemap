@@ -1,6 +1,0 @@
-framework module WolfAnyCodable {
-  umbrella header "WolfAnyCodable-umbrella.h"
-
-  export *
-  module * { export * }
-}

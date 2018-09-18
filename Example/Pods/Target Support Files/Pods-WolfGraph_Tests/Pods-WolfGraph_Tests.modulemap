@@ -1,6 +1,0 @@
-framework module Pods_WolfGraph_Tests {
-  umbrella header "Pods-WolfGraph_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
