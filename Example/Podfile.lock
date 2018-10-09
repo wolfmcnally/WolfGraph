@@ -1,7 +1,7 @@
 PODS:
-  - ExtensibleEnumeratedName (1.0)
-  - WolfAnyCodable (1.0)
-  - WolfGraph (0.1.0):
+  - ExtensibleEnumeratedName (1.0.3)
+  - WolfAnyCodable (1.0.2)
+  - WolfGraph (0.1.1):
     - ExtensibleEnumeratedName
     - WolfAnyCodable
 
@@ -18,9 +18,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ExtensibleEnumeratedName: c7979e8290bb7f49b23742d62fee2cd75586b53e
-  WolfAnyCodable: b01694c2c326aed33ecac23eca809a1e3d5c4925
-  WolfGraph: 2a004c8060febd812c0299360a9bfe6036f6c448
+  ExtensibleEnumeratedName: c6caeb662f79105e7229a613f9043e8a7e15e642
+  WolfAnyCodable: 60680e90fff80f6b3c1099610ea6de47540e644e
+  WolfGraph: b4b5959cc936d6a51e2af76688bffef881c95b39
 
 PODFILE CHECKSUM: 2a3553a0d023e1182f2d26e4aa7c27d76c974618
 
