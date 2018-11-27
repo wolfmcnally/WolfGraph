@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AppViewController.swift
 //  WolfGraph
 //
 //  Created by Wolf McNally on 09/13/2018.
@@ -22,7 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import UIKit
+import WolfViewControllers
 
-class ViewController: UIViewController {
+class AppViewController: ViewController {
 }

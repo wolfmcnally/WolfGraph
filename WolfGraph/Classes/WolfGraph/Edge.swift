@@ -25,13 +25,17 @@
 import Foundation
 
 /// An edge, part of a generalized graph structure
-public struct Edge: Hashable, Codable {
+public struct Edge: Hashable, Codable, Comparable {
     /// A unique ID assigned to an edge
-    public struct ID: Codable, Hashable, CustomStringConvertible {
+    public struct ID: Codable, Hashable, CustomStringConvertible, Comparable {
         private let uuid: UUID
 
         init() {
             uuid = UUID()
+        }
+
+        init<T>(using generator: inout T) where T: RandomNumberGenerator {
+            uuid = UUID.random(using: &generator)
         }
 
         public init(from decoder: Decoder) throws {
@@ -47,9 +51,13 @@ public struct Edge: Hashable, Codable {
         public var description: String {
             return uuid.description
         }
+
+        public static func < (lhs: ID, rhs: ID) -> Bool {
+            return lhs.uuid < rhs.uuid
+        }
     }
 
-    /// The unique ID of this edge
+    /// The unique ID of this edge.
     public let id: ID
     var attributes: Attributes
     var tailID: Vertex.ID
@@ -58,6 +66,16 @@ public struct Edge: Hashable, Codable {
     /// Creates a new instance with a unique ID pointing from `tail` to `head`.
     public init(from tail: Vertex, to head: Vertex) {
         id = ID()
+        attributes = Attributes()
+        self.tailID = tail.id
+        self.headID = head.id
+    }
+
+    /// Creates a new instance pointing from `tail` to `head`
+    /// with an ID produced by the provided random number
+    /// generator.
+    public init<T>(from tail: Vertex, to head: Vertex, using generator: inout T) where T: RandomNumberGenerator {
+        id = ID(using: &generator)
         attributes = Attributes()
         self.tailID = tail.id
         self.headID = head.id
@@ -94,6 +112,10 @@ public struct Edge: Hashable, Codable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+
+    public static func < (lhs: Edge, rhs: Edge) -> Bool {
+        return lhs.id < rhs.id
     }
 }
 

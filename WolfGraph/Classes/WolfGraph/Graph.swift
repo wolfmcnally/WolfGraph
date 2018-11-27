@@ -26,22 +26,26 @@ import Foundation
 
 public struct Graph: Codable {
     private typealias VertexEdges = [Vertex.ID: Set<Edge.ID>]
-    private var vertices: [Vertex.ID: Vertex]
-    private var edges: [Edge.ID: Edge]
+
+    let isUndirected: Bool
+    var verticesByID: [Vertex.ID: Vertex]
+    var edgesByID: [Edge.ID: Edge]
     private var attributes: Attributes
     private var outEdges: VertexEdges
     private var inEdges: VertexEdges
 
     private enum CodingKeys: String, CodingKey {
+        case isUndirected
         case vertices
         case edges
         case attributes
     }
 
     /// Creates a new graph instance
-    public init() {
-        vertices = [Vertex.ID: Vertex]()
-        edges = [Edge.ID: Edge]()
+    public init(isUndirected: Bool = true) {
+        self.isUndirected = isUndirected
+        verticesByID = [Vertex.ID: Vertex]()
+        edgesByID = [Edge.ID: Edge]()
         attributes = Attributes()
         outEdges = VertexEdges()
         inEdges = VertexEdges()
@@ -51,14 +55,24 @@ public struct Graph: Codable {
     ///
     /// In graph theory, this is known as the graph's *order*.
     public var vertexCount: Int {
-        return vertices.count
+        return verticesByID.count
     }
 
     /// The number of edges in the graph.
     ///
-    /// In graph theiry, this is known as the graph's *size*.
+    /// In graph theory, this is known as the graph's *size*.
     public var edgeCount: Int {
-        return edges.count
+        return edgesByID.count
+    }
+
+    /// Returns the set of all vertices.
+    public var vertices: Set<Vertex> {
+        return Set(verticesByID.values)
+    }
+
+    /// Returns the set of all edges
+    public var edges: Set<Edge> {
+        return Set(edgesByID.values)
     }
 
     private mutating func insertInEdge(for edge: Edge) {
@@ -92,23 +106,25 @@ public struct Graph: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
+        isUndirected = try container.decodeIfPresent(Bool.self, forKey: .isUndirected) ?? false
+
         let verticesArray = try container.decode([Vertex].self, forKey: .vertices)
-        vertices = [Vertex.ID: Vertex]()
+        verticesByID = [Vertex.ID: Vertex]()
         for vertex in verticesArray {
-            vertices[vertex.id] = vertex
+            verticesByID[vertex.id] = vertex
         }
 
         let edgesArray = try container.decode([Edge].self, forKey: .edges)
-        edges = [Edge.ID: Edge]()
+        edgesByID = [Edge.ID: Edge]()
         for edge in edgesArray {
-            edges[edge.id] = edge
+            edgesByID[edge.id] = edge
         }
 
         attributes = try container.decodeIfPresent(Attributes.self, forKey: .attributes) ?? Attributes()
 
         outEdges = VertexEdges()
         inEdges = VertexEdges()
-        for edge in edges.values {
+        for edge in edgesByID.values {
             insertInEdge(for: edge)
             insertOutEdge(for: edge)
         }
@@ -116,8 +132,11 @@ public struct Graph: Codable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(Array(vertices.values), forKey: .vertices)
-        try container.encode(Array(edges.values), forKey: .edges)
+        if isUndirected {
+            try container.encode(isUndirected, forKey: .isUndirected)
+        }
+        try container.encode(Array(verticesByID.values), forKey: .vertices)
+        try container.encode(Array(edgesByID.values), forKey: .edges)
         if !attributes.isEmpty {
             try container.encode(attributes, forKey: .attributes)
         }
@@ -125,12 +144,12 @@ public struct Graph: Codable {
 
     /// Returns `false` if the vertex is unknown, `true` otherwise.
     public func contains(_ vertex: Vertex) -> Bool {
-        return vertices.keys.contains(vertex.id)
+        return verticesByID.keys.contains(vertex.id)
     }
 
     /// Returns `false` if the edge is unknown, `true` otherwise.
     public func contains(_ edge: Edge) -> Bool {
-        return edges.keys.contains(edge.id)
+        return edgesByID.keys.contains(edge.id)
     }
 
     /// Throws if the vertex is unknown. No effect otherwise.
@@ -166,7 +185,7 @@ public struct Graph: Codable {
     /// Throws if attempting to insert a duplicate vertex.
     public mutating func insert(_ vertex: Vertex) throws {
         try checkDoesNotContain(vertex)
-        vertices[vertex.id] = vertex
+        verticesByID[vertex.id] = vertex
     }
 
     /// Removes the vertex from the graph, along with all of its incident edges.
@@ -174,10 +193,10 @@ public struct Graph: Codable {
     /// Throws if the vertex is unknown.
     public mutating func remove(_ vertex: Vertex) throws {
         try checkContains(vertex)
-        for edge in try allEdges(of: vertex) {
+        for edge in try incidentEdges(of: vertex) {
             try remove(edge)
         }
-        vertices.removeValue(forKey: vertex.id)
+        verticesByID.removeValue(forKey: vertex.id)
     }
 
     /// Inserts the edge into the graph.
@@ -186,7 +205,7 @@ public struct Graph: Codable {
     /// Throws if the head or tail of the edge are unknown.
     public mutating func insert(_ edge: Edge) throws {
         try checkDoesNotContain(edge)
-        edges[edge.id] = edge
+        edgesByID[edge.id] = edge
         try checkContains(tail(of: edge))
         try checkContains(head(of: edge))
         insertInEdge(for: edge)
@@ -198,126 +217,77 @@ public struct Graph: Codable {
     /// Throws if the edge is unknown.
     public mutating func remove(_ edge: Edge) throws {
         try checkContains(edge)
-        edges.removeValue(forKey: edge.id)
+        edgesByID.removeValue(forKey: edge.id)
         removeInEdge(for: edge)
         removeOutEdge(for: edge)
     }
 
-    //
-    // Graph Attributes
-    //
-
-    /// Set the value for the key on this graph.
-    public mutating func setValue(for key: AttributeName, to value: Codable) {
-        attributes.setValue(for: key, to: value)
-    }
-
-    /// Returns the value for the key on this graph.
-    public func value<T: Codable>(for key: AttributeName) throws -> T? {
-        return try attributes.value(for: key)
-    }
-
-    //
-    // Vertex Attributes
-    //
-
-    /// Set the value of the key on the vertex.
+    /// Returns true if any of `tail`'s out edges goes to `head`.
     ///
-    /// Throws if the vertex is unknown.
-    public mutating func setValue(of vertex: Vertex, for key: AttributeName, to value: Codable) throws {
-        try checkContains(vertex)
-        vertices[vertex.id]!.attributes.setValue(for: key, to: value)
+    /// Throws if either vertex is unknown.
+    public func hasEdge(from tail: Vertex, to head: Vertex) throws -> Bool {
+        let tailOutEdges = try outEdges(of: tail)
+        for edge in tailOutEdges {
+            if try self.head(of: edge) == head {
+                return true
+            }
+        }
+        return false
     }
 
-    /// Returns the value of the key on the vertex.
-    ///
-    /// Throws if the vertex is unknown.
-    public func value<T: Codable>(of vertex: Vertex, for key: AttributeName) throws -> T? {
-        try checkContains(vertex)
-        return try vertices[vertex.id]!.attributes.value(for: key)
-    }
-
-    /// Removes the key on the vertex.
-    ///
-    /// Throws if the vertex is unknown.
-    public mutating func removeValue(of vertex: Vertex, for key: AttributeName) throws {
-        try checkContains(vertex)
-        vertices[vertex.id]!.attributes.removeValue(for: key)
+    public func hasEdge(_ a: Vertex, _ b: Vertex) throws -> Bool {
+        return try hasEdge(from: a, to: b) || hasEdge(from: b, to: a)
     }
 
     //
-    // Edge Attributes
-    //
-
-    /// Set the value of the key on the edge.
-    public mutating func setValue(of edge: Edge, for key: AttributeName, to value: Codable) throws {
-        try checkContains(edge)
-        edges[edge.id]!.attributes.setValue(for: key, to: value)
-    }
-
-    /// Returns the value of the key on the edge.
-    public func value<T: Codable>(of edge: Edge, key: AttributeName) throws -> T? {
-        try checkContains(edge)
-        return try edges[edge.id]!.attributes.value(for: key)
-    }
-
-    /// Removes the key on the edge.
-    ///
-    /// Throws if the edge is unknown.
-    public mutating func removeValue(of edge: Edge, for key: AttributeName) throws {
-        try checkContains(edge)
-        edges[edge.id]!.attributes.removeValue(for: key)
-    }
-
-    //
-    // Edge ends
+    // MARK: - Edge ends
     //
 
     /// Returns the vertex at the tail of the edge.
     public func tail(of edge: Edge) throws -> Vertex {
         try checkContains(edge)
-        return vertices[edge.tailID]!
+        return verticesByID[edge.tailID]!
     }
 
     /// Returns the vertex at the head of the edge.
     public func head(of edge: Edge) throws -> Vertex {
         try checkContains(edge)
-        return vertices[edge.headID]!
+        return verticesByID[edge.headID]!
     }
 
     /// Returns the count of in-edges of the vertex.
-    public func inCount(of vertex: Vertex) throws -> Int {
+    public func inEdgesCount(of vertex: Vertex) throws -> Int {
         try checkContains(vertex)
         return inEdges[vertex.id]?.count ?? 0
     }
 
-    /// Returns in in-edges of the vertex.
+    /// Returns the in-edges of the vertex.
     public func inEdges(of vertex: Vertex) throws -> Set<Edge> {
         try checkContains(vertex)
-        let a = (self.inEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edges [$0]! }
+        let a = (self.inEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edgesByID [$0]! }
         return Set(a)
     }
 
     /// Returns the count of out-edges of the vertex.
-    public func outCount(of vertex: Vertex) throws -> Int {
+    public func outEdgesCount(of vertex: Vertex) throws -> Int {
         try checkContains(vertex)
         return outEdges[vertex.id]?.count ?? 0
     }
 
     /// Returns the count of all edges contected to the vertex.
-    public func count(of vertex: Vertex) throws -> Int {
-        return try inCount(of: vertex) + outCount(of: vertex)
+    public func incidentEdgesCount(of vertex: Vertex) throws -> Int {
+        return try inEdgesCount(of: vertex) + outEdgesCount(of: vertex)
     }
 
     /// Returns the out-edges of the vertex.
     public func outEdges(of vertex: Vertex) throws -> Set<Edge> {
         try checkContains(vertex)
-        let a = (self.outEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edges[$0]! }
+        let a = (self.outEdges[vertex.id] ?? Set<Edge.ID>()).map { self.edgesByID[$0]! }
         return Set(a)
     }
 
     /// Return the set of all edges connected to the vertex.
-    public func allEdges(of vertex: Vertex) throws -> Set<Edge> {
+    public func incidentEdges(of vertex: Vertex) throws -> Set<Edge> {
         return try inEdges(of: vertex).union(outEdges(of: vertex))
     }
 
@@ -336,5 +306,76 @@ public struct Graph: Codable {
     /// Returns the neighbors of the vertex.
     public func neigbors(of vertex: Vertex) throws -> Set<Vertex> {
         return try predecessors(of: vertex).union(successors(of: vertex))
+    }
+
+    //
+    // MARK: - Graph Attributes
+    //
+
+    /// Set the value for the key on this graph.
+    public mutating func setValue(for key: AttributeName, to value: GraphAttribute) {
+        attributes.setValue(for: key, to: value)
+    }
+
+    /// Returns the value for the key on this graph.
+    public func value<T>(for key: AttributeName) throws -> T? {
+        return try attributes.value(for: key)
+    }
+
+    /// Removes the key on this graph.
+    public mutating func removeValue(for key: AttributeName) {
+        attributes.removeValue(for: key)
+    }
+
+    //
+    // MARK: - Vertex Attributes
+    //
+
+    /// Set the value of the key on the vertex.
+    ///
+    /// Throws if the vertex is unknown.
+    public mutating func setValue(of vertex: Vertex, for key: AttributeName, to value: GraphAttribute) throws {
+        try checkContains(vertex)
+        verticesByID[vertex.id]!.attributes.setValue(for: key, to: value)
+    }
+
+    /// Returns the value of the key on the vertex.
+    ///
+    /// Throws if the vertex is unknown.
+    public func value<T>(of vertex: Vertex, for key: AttributeName) throws -> T? {
+        try checkContains(vertex)
+        return try verticesByID[vertex.id]!.attributes.value(for: key)
+    }
+
+    /// Removes the key on the vertex.
+    ///
+    /// Throws if the vertex is unknown.
+    public mutating func removeValue(of vertex: Vertex, for key: AttributeName) throws {
+        try checkContains(vertex)
+        verticesByID[vertex.id]!.attributes.removeValue(for: key)
+    }
+
+    //
+    // MARK: - Edge Attributes
+    //
+
+    /// Set the value of the key on the edge.
+    public mutating func setValue(of edge: Edge, for key: AttributeName, to value: GraphAttribute) throws {
+        try checkContains(edge)
+        edgesByID[edge.id]!.attributes.setValue(for: key, to: value)
+    }
+
+    /// Returns the value of the key on the edge.
+    public func value<T: GraphAttribute>(of edge: Edge, for key: AttributeName) throws -> T? {
+        try checkContains(edge)
+        return try edgesByID[edge.id]!.attributes.value(for: key)
+    }
+
+    /// Removes the key on the edge.
+    ///
+    /// Throws if the edge is unknown.
+    public mutating func removeValue(of edge: Edge, for key: AttributeName) throws {
+        try checkContains(edge)
+        edgesByID[edge.id]!.attributes.removeValue(for: key)
     }
 }

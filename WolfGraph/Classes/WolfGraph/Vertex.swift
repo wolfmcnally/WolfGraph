@@ -24,15 +24,30 @@
 
 import Foundation
 
-/// A vertex, part of a generalized graph structure
-public struct Vertex: Hashable, Codable {
+func < (lhs: UUID, rhs: UUID) -> Bool {
+    var lhsUUID = lhs.uuid
+    var rhsUUID = rhs.uuid
+    var lhsArray: [UInt8] {
+        return [UInt8](UnsafeBufferPointer(start: &lhsUUID.0, count: MemoryLayout.size(ofValue: lhsUUID)))
+    }
+    var rhsArray: [UInt8] {
+        return [UInt8](UnsafeBufferPointer(start: &rhsUUID.0, count: MemoryLayout.size(ofValue: rhsUUID)))
+    }
+    return lhsArray.lexicographicallyPrecedes(rhsArray)
+}
 
+/// A vertex, part of a generalized graph structure
+public struct Vertex: Hashable, Codable, Comparable {
     /// A unique ID assigned to a vertex
-    public struct ID: Codable, Hashable, CustomStringConvertible {
+    public struct ID: Codable, Hashable, CustomStringConvertible, Comparable {
         private let uuid: UUID
 
         init() {
             uuid = UUID()
+        }
+
+        init<T>(using generator: inout T) where T: RandomNumberGenerator {
+            uuid = UUID.random(using: &generator)
         }
 
         public init(from decoder: Decoder) throws {
@@ -48,15 +63,26 @@ public struct Vertex: Hashable, Codable {
         public var description: String {
             return uuid.description
         }
+
+        public static func < (lhs: ID, rhs: ID) -> Bool {
+            return lhs.uuid < rhs.uuid
+        }
     }
 
-    /// The unique ID of this vertex
+    /// The unique ID of this vertex.
     public let id: ID
     var attributes: Attributes
 
     /// Creates a new instance with a unique ID.
     public init() {
         id = ID()
+        attributes = Attributes()
+    }
+
+    /// Creates a new instance with an ID produced by
+    /// the provided random number generator.
+    public init<T>(using generator: inout T) where T: RandomNumberGenerator {
+        id = ID(using: &generator)
         attributes = Attributes()
     }
 
@@ -85,6 +111,10 @@ public struct Vertex: Hashable, Codable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+
+    public static func < (lhs: Vertex, rhs: Vertex) -> Bool {
+        return lhs.id < rhs.id
     }
 }
 

@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D2575BF6C55531EBCF3CC1D /* Pods_WolfGraph_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2771A49638752679602036 /* Pods_WolfGraph_Example.framework */; };
+		03E0B2D3216F1D4700077B85 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0B2D2216F1D4700077B85 /* GraphViewController.swift */; };
+		03E0B2D5216F1E8800077B85 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E0B2D4216F1E8800077B85 /* GraphView.swift */; };
+		16400C9E34D91A5C4134C52A /* Pods_WolfGraph_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C62E55D8527F13BFA21BDA04 /* Pods_WolfGraph_Example.framework */; };
+		48C06645A8F4845D21064986 /* Pods_WolfGraph_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84247B0421E088C45261A7CA /* Pods_WolfGraph_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* AppViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A98B06989E287B1D5619F94F /* Pods_WolfGraph_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3D5F465D0BBC5531BE1845 /* Pods_WolfGraph_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,24 +30,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03E0B2D2216F1D4700077B85 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		03E0B2D4216F1E8800077B85 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		3984F4190327012F254CD980 /* WolfGraph.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = WolfGraph.podspec; path = ../WolfGraph.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		3E2771A49638752679602036 /* Pods_WolfGraph_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WolfGraph_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* WolfGraph_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WolfGraph_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* WolfGraph_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WolfGraph_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		90F3233535C4B13B61ED429D /* Pods-WolfGraph_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Example.release.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Example/Pods-WolfGraph_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C48266F3B1A0AB4A8DBB4EB7 /* Pods-WolfGraph_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Example.debug.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Example/Pods-WolfGraph_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		84247B0421E088C45261A7CA /* Pods_WolfGraph_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WolfGraph_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86DB28E8FC51402CA231FC62 /* Pods-WolfGraph_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Example.debug.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Example/Pods-WolfGraph_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A1B6B804E0AEBCD977A9A22F /* Pods-WolfGraph_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Tests.debug.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Tests/Pods-WolfGraph_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C4DECF98BE8E021F2AA78454 /* Pods-WolfGraph_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Tests.release.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Tests/Pods-WolfGraph_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C62E55D8527F13BFA21BDA04 /* Pods_WolfGraph_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WolfGraph_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1A32124E00F716D095FCA32 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		EA3D5F465D0BBC5531BE1845 /* Pods_WolfGraph_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WolfGraph_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F28B2AEDAEFA65D61EF187C9 /* Pods-WolfGraph_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Tests.release.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Tests/Pods-WolfGraph_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F96C059FF527D6875BD56D2E /* Pods-WolfGraph_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Tests.debug.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Tests/Pods-WolfGraph_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		D9A0B4084588CD510270B211 /* Pods-WolfGraph_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WolfGraph_Example.release.xcconfig"; path = "Target Support Files/Pods-WolfGraph_Example/Pods-WolfGraph_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F9F77D23B079C159EB8F557F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D2575BF6C55531EBCF3CC1D /* Pods_WolfGraph_Example.framework in Frameworks */,
+				16400C9E34D91A5C4134C52A /* Pods_WolfGraph_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A98B06989E287B1D5619F94F /* Pods_WolfGraph_Tests.framework in Frameworks */,
+				48C06645A8F4845D21064986 /* Pods_WolfGraph_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +81,7 @@
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				F38F65EE9B9842EC8DACA781 /* Pods */,
-				B130518FC0F65EB42B8C1EF1 /* Frameworks */,
+				7E14370E07783A8C49D56A92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,7 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				607FACD71AFB9204008FA782 /* AppViewController.swift */,
+				03E0B2D2216F1D4700077B85 /* GraphViewController.swift */,
+				03E0B2D4216F1E8800077B85 /* GraphView.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -139,11 +145,11 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		B130518FC0F65EB42B8C1EF1 /* Frameworks */ = {
+		7E14370E07783A8C49D56A92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3E2771A49638752679602036 /* Pods_WolfGraph_Example.framework */,
-				EA3D5F465D0BBC5531BE1845 /* Pods_WolfGraph_Tests.framework */,
+				C62E55D8527F13BFA21BDA04 /* Pods_WolfGraph_Example.framework */,
+				84247B0421E088C45261A7CA /* Pods_WolfGraph_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,10 +157,10 @@
 		F38F65EE9B9842EC8DACA781 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C48266F3B1A0AB4A8DBB4EB7 /* Pods-WolfGraph_Example.debug.xcconfig */,
-				90F3233535C4B13B61ED429D /* Pods-WolfGraph_Example.release.xcconfig */,
-				F96C059FF527D6875BD56D2E /* Pods-WolfGraph_Tests.debug.xcconfig */,
-				F28B2AEDAEFA65D61EF187C9 /* Pods-WolfGraph_Tests.release.xcconfig */,
+				86DB28E8FC51402CA231FC62 /* Pods-WolfGraph_Example.debug.xcconfig */,
+				D9A0B4084588CD510270B211 /* Pods-WolfGraph_Example.release.xcconfig */,
+				A1B6B804E0AEBCD977A9A22F /* Pods-WolfGraph_Tests.debug.xcconfig */,
+				C4DECF98BE8E021F2AA78454 /* Pods-WolfGraph_Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -166,11 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "WolfGraph_Example" */;
 			buildPhases = (
-				6709487385939257750AAC40 /* [CP] Check Pods Manifest.lock */,
+				A57713A6843FB0BB0E0425E2 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				E7C6306048CA939AC4714434 /* [CP] Embed Pods Frameworks */,
+				6FFCB518BC7A17090F7701E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,7 +191,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "WolfGraph_Tests" */;
 			buildPhases = (
-				69B4650A70D150A443F9E483 /* [CP] Check Pods Manifest.lock */,
+				31894D0F85CAC4F41ABD9191 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -212,6 +218,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 92TUA8H52D;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -261,29 +268,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6709487385939257750AAC40 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WolfGraph_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		69B4650A70D150A443F9E483 /* [CP] Check Pods Manifest.lock */ = {
+		31894D0F85CAC4F41ABD9191 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,7 +290,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E7C6306048CA939AC4714434 /* [CP] Embed Pods Frameworks */ = {
+		6FFCB518BC7A17090F7701E9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -314,21 +299,93 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-WolfGraph_Example/Pods-WolfGraph_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BezierKit/BezierKit.framework",
+				"${BUILT_PRODUCTS_DIR}/CommonCryptoModule/CommonCryptoModule.framework",
 				"${BUILT_PRODUCTS_DIR}/ExtensibleEnumeratedName/ExtensibleEnumeratedName.framework",
-				"${BUILT_PRODUCTS_DIR}/WolfAnyCodable/WolfAnyCodable.framework",
+				"${BUILT_PRODUCTS_DIR}/VectorBoolean/VectorBoolean.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfAnimation/WolfAnimation.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfApp/WolfApp.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfAutolayout/WolfAutolayout.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfCache/WolfCache.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfColor/WolfColor.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfConcurrency/WolfConcurrency.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfFoundation/WolfFoundation.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfGeometry/WolfGeometry.framework",
 				"${BUILT_PRODUCTS_DIR}/WolfGraph/WolfGraph.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfImage/WolfImage.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfLocale/WolfLocale.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfLog/WolfLog.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfNesting/WolfNesting.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfNetwork/WolfNetwork.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfNumerics/WolfNumerics.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfOSBridge/WolfOSBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfPaths/WolfPaths.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfPipe/WolfPipe.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfPubSub/WolfPubSub.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfSec/WolfSec.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfStrings/WolfStrings.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfViewControllers/WolfViewControllers.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfViews/WolfViews.framework",
+				"${BUILT_PRODUCTS_DIR}/WolfWith/WolfWith.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BezierKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonCryptoModule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExtensibleEnumeratedName.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfAnyCodable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VectorBoolean.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfAnimation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfApp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfAutolayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfColor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfConcurrency.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfFoundation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfGeometry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfGraph.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfLocale.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfLog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfNesting.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfNetwork.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfNumerics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfOSBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfPaths.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfPipe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfPubSub.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfSec.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfStrings.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfViewControllers.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfViews.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WolfWith.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WolfGraph_Example/Pods-WolfGraph_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A57713A6843FB0BB0E0425E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WolfGraph_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -338,8 +395,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				03E0B2D3216F1D4700077B85 /* GraphViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* AppViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				03E0B2D5216F1E8800077B85 /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +492,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -480,43 +540,46 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C48266F3B1A0AB4A8DBB4EB7 /* Pods-WolfGraph_Example.debug.xcconfig */;
+			baseConfigurationReference = 86DB28E8FC51402CA231FC62 /* Pods-WolfGraph_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 92TUA8H52D;
 				INFOPLIST_FILE = WolfGraph/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90F3233535C4B13B61ED429D /* Pods-WolfGraph_Example.release.xcconfig */;
+			baseConfigurationReference = D9A0B4084588CD510270B211 /* Pods-WolfGraph_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 92TUA8H52D;
 				INFOPLIST_FILE = WolfGraph/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F96C059FF527D6875BD56D2E /* Pods-WolfGraph_Tests.debug.xcconfig */;
+			baseConfigurationReference = A1B6B804E0AEBCD977A9A22F /* Pods-WolfGraph_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -531,14 +594,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WolfGraph_Example.app/WolfGraph_Example";
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F28B2AEDAEFA65D61EF187C9 /* Pods-WolfGraph_Tests.release.xcconfig */;
+			baseConfigurationReference = C4DECF98BE8E021F2AA78454 /* Pods-WolfGraph_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -549,7 +612,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WolfGraph_Example.app/WolfGraph_Example";
 			};
 			name = Release;

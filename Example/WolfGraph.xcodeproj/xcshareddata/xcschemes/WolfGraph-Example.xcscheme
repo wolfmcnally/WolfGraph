@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,21 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "279582446AC21A941921237F150E5954"
+               BlueprintIdentifier = "216F1572E1668C6A0BED1912D6D556FB"
+               BuildableName = "WolfPaths.framework"
+               BlueprintName = "WolfPaths"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A7E938FE7802BD2FA343B8B60A640F14"
                BuildableName = "WolfGraph.framework"
                BlueprintName = "WolfGraph"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'WolfGraph'
-    s.version          = '0.1.1'
+    s.version          = '0.1.2'
     s.summary          = 'A Swift-based general graph structure with value semantics.'
 
     s.homepage         = 'https://github.com/wolfmcnally/WolfGraph'
@@ -19,5 +19,8 @@ Pod::Spec.new do |s|
     s.module_name = 'WolfGraph'
 
     s.dependency 'ExtensibleEnumeratedName'
-    s.dependency 'WolfAnyCodable'
+    s.dependency 'WolfNumerics'
+    s.dependency 'WolfGeometry'
+    s.dependency 'WolfColor'
+    s.dependency 'WolfWith'
 end
