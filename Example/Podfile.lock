@@ -41,7 +41,7 @@ PODS:
     - WolfFoundation
     - WolfNumerics
     - WolfStrings
-  - WolfGraph (0.1.1):
+  - WolfGraph (0.1.2):
     - ExtensibleEnumeratedName
     - WolfColor
     - WolfGeometry
@@ -190,7 +190,7 @@ SPEC CHECKSUMS:
   WolfConcurrency: caae902ce58a9ec314b319cf3c72543985fe1801
   WolfFoundation: c926831ef68d4795b5dc87016ce78ad051d03309
   WolfGeometry: d9fef2a3a4f9eab308c9ac9d42223b3232ca98b3
-  WolfGraph: 6ac312832fa6aef73e626086e57334d5048b6a19
+  WolfGraph: 83b9558e5f7eb3fdfb2bc839cbb98f200335f4b7
   WolfImage: 05bcd47542da537ca59cff0e86414556ab4d685e
   WolfLocale: cc7921bc5d24c5e792603e7732c476385f969176
   WolfLog: 6329a08de6c099ca6ccea857127d9df2f74dfea3
@@ -198,7 +198,7 @@ SPEC CHECKSUMS:
   WolfNetwork: e341bec3507849b99d822d9f9c6767f2b4288b41
   WolfNumerics: b8da8b6bfd8fe20825c727a0a67f324e6f60e23c
   WolfOSBridge: 6c3c6be3993a8c38db0dc2ab2d7fc9e98ec4938d
-  WolfPaths: 7d38f0d754e767fbf5eba7eea4dda00d15185a01
+  WolfPaths: 241f91474cc47e1c8d0d9b2e330e7508cf2b321c
   WolfPipe: 13f96a573eb084aa343b6c971f6dbba2fcf73287
   WolfPubSub: 9a29c3cf6c3ec1f70054febb22a612afcded5d9b
   WolfSec: d5f6f34c98a3b76fb4be7c07df0ba391fda93bf2
