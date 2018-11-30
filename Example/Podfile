@@ -15,6 +15,10 @@ target 'WolfGraph_Example' do
   pod 'WolfPaths', :path => '../../WolfPaths'
   pod 'WolfPipe', :path => '../../WolfPipe'
   pod 'WolfConcurrency', :path => '../../WolfConcurrency'
+  pod 'WolfSec', :path => '../../WolfSec'
+  pod 'WolfImage', :path => '../../WolfImage'
+  pod 'WolfNetwork', :path => '../../WolfNetwork'
+  pod 'WolfCache', :path => '../../WolfCache'
 
   target 'WolfGraph_Tests' do
     inherit! :search_paths

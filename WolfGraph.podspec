@@ -23,4 +23,5 @@ Pod::Spec.new do |s|
     s.dependency 'WolfGeometry'
     s.dependency 'WolfColor'
     s.dependency 'WolfWith'
+    s.dependency 'WolfFoundation'
 end

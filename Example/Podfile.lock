@@ -7,7 +7,7 @@ PODS:
     - WolfConcurrency
     - WolfFoundation
     - WolfLog
-  - WolfApp (1.0.2):
+  - WolfApp (1.0.3):
     - WolfAnimation
     - WolfConcurrency
     - WolfFoundation
@@ -17,7 +17,7 @@ PODS:
     - WolfFoundation
     - WolfGeometry
     - WolfOSBridge
-  - WolfCache (1.0.1):
+  - WolfCache (1.0.2):
     - ExtensibleEnumeratedName
     - WolfConcurrency
     - WolfImage
@@ -25,6 +25,7 @@ PODS:
     - WolfNetwork
   - WolfColor (1.0.4):
     - ExtensibleEnumeratedName
+    - WolfFoundation
     - WolfNumerics
     - WolfPipe
     - WolfStrings
@@ -32,10 +33,9 @@ PODS:
     - WolfFoundation
     - WolfLog
     - WolfNumerics
-  - WolfFoundation (1.0.3):
+  - WolfFoundation (1.0.5):
     - WolfNumerics
     - WolfPipe
-    - WolfStrings
   - WolfGeometry (2.0.1):
     - ExtensibleEnumeratedName
     - WolfFoundation
@@ -44,6 +44,7 @@ PODS:
   - WolfGraph (0.1.2):
     - ExtensibleEnumeratedName
     - WolfColor
+    - WolfFoundation
     - WolfGeometry
     - WolfNumerics
     - WolfWith
@@ -64,7 +65,7 @@ PODS:
     - WolfNumerics
     - WolfStrings
   - WolfNesting (1.0.1)
-  - WolfNetwork (1.0.1):
+  - WolfNetwork (1.0.2):
     - ExtensibleEnumeratedName
     - WolfApp
     - WolfConcurrency
@@ -75,25 +76,25 @@ PODS:
     - WolfPubSub
     - WolfSec
     - WolfStrings
-  - WolfNumerics (2.0.1)
+  - WolfNumerics (2.0.2)
   - WolfOSBridge (1.0.1)
   - WolfPaths (0.1.0):
     - BezierKit
     - VectorBoolean
     - WolfGeometry
-  - WolfPipe (1.0.5)
+  - WolfPipe (1.0.6)
   - WolfPubSub (1.0.1):
     - WolfConcurrency
     - WolfFoundation
   - WolfSec (1.0.1):
     - CommonCryptoModule
+    - WolfFoundation
     - WolfPipe
-    - WolfStrings
-  - WolfStrings (1.0.3):
+  - WolfStrings (1.0.5):
     - ExtensibleEnumeratedName
     - WolfNumerics
     - WolfPipe
-  - WolfViewControllers (1.0.3):
+  - WolfViewControllers (1.0.4):
     - WolfConcurrency
     - WolfFoundation
     - WolfLocale
@@ -101,7 +102,7 @@ PODS:
     - WolfNesting
     - WolfStrings
     - WolfViews
-  - WolfViews (1.0.4):
+  - WolfViews (1.0.5):
     - WolfAnimation
     - WolfApp
     - WolfAutolayout
@@ -121,14 +122,18 @@ PODS:
 DEPENDENCIES:
   - BezierKit (from `../../BezierKit`)
   - VectorBoolean (from `../../VectorBoolean`)
+  - WolfCache (from `../../WolfCache`)
   - WolfColor (from `../../WolfColor`)
   - WolfConcurrency (from `../../WolfConcurrency`)
   - WolfFoundation (from `../../WolfFoundation`)
   - WolfGeometry (from `../../WolfGeometry`)
   - WolfGraph (from `../`)
+  - WolfImage (from `../../WolfImage`)
+  - WolfNetwork (from `../../WolfNetwork`)
   - WolfNumerics (from `../../WolfNumerics`)
   - WolfPaths (from `../../WolfPaths`)
   - WolfPipe (from `../../WolfPipe`)
+  - WolfSec (from `../../WolfSec`)
   - WolfViewControllers (from `../../WolfViewControllers`)
   - WolfViews (from `../../WolfViews`)
 
@@ -139,15 +144,11 @@ SPEC REPOS:
     - WolfAnimation
     - WolfApp
     - WolfAutolayout
-    - WolfCache
-    - WolfImage
     - WolfLocale
     - WolfLog
     - WolfNesting
-    - WolfNetwork
     - WolfOSBridge
     - WolfPubSub
-    - WolfSec
     - WolfStrings
     - WolfWith
 
@@ -156,6 +157,8 @@ EXTERNAL SOURCES:
     :path: "../../BezierKit"
   VectorBoolean:
     :path: "../../VectorBoolean"
+  WolfCache:
+    :path: "../../WolfCache"
   WolfColor:
     :path: "../../WolfColor"
   WolfConcurrency:
@@ -166,12 +169,18 @@ EXTERNAL SOURCES:
     :path: "../../WolfGeometry"
   WolfGraph:
     :path: "../"
+  WolfImage:
+    :path: "../../WolfImage"
+  WolfNetwork:
+    :path: "../../WolfNetwork"
   WolfNumerics:
     :path: "../../WolfNumerics"
   WolfPaths:
     :path: "../../WolfPaths"
   WolfPipe:
     :path: "../../WolfPipe"
+  WolfSec:
+    :path: "../../WolfSec"
   WolfViewControllers:
     :path: "../../WolfViewControllers"
   WolfViews:
@@ -183,30 +192,30 @@ SPEC CHECKSUMS:
   ExtensibleEnumeratedName: c6caeb662f79105e7229a613f9043e8a7e15e642
   VectorBoolean: aabe6d2b8422c4bda50f7406137b4d85e97e04c2
   WolfAnimation: 357e094c886389a6f805e5330a11aa941abfc5e3
-  WolfApp: fb1fac6320f0db64e590526917ad85f546d2e0c8
+  WolfApp: c9ec6d2f3b24d74f25bf2eed7631417a36ad6cdf
   WolfAutolayout: 4c3decb14562f35d52e3a045cdc31b26d8e9f21c
-  WolfCache: cc0400c371c06d1c2bb725e6c9c08f9b039e343a
-  WolfColor: 6644d0940b059b0575b68ded0236f564e513eedc
+  WolfCache: b3deb30760951ebbb82bec83c7e2f92f6c6b2184
+  WolfColor: eeb873325d51b10c3460aec6a2da0068241b7dba
   WolfConcurrency: caae902ce58a9ec314b319cf3c72543985fe1801
-  WolfFoundation: c926831ef68d4795b5dc87016ce78ad051d03309
+  WolfFoundation: 5e64d0970991e7cc29112a448a31770ac28df24e
   WolfGeometry: d9fef2a3a4f9eab308c9ac9d42223b3232ca98b3
-  WolfGraph: 83b9558e5f7eb3fdfb2bc839cbb98f200335f4b7
-  WolfImage: 05bcd47542da537ca59cff0e86414556ab4d685e
+  WolfGraph: 5bea759feb351bdbc690918a8018b7e40d4bf938
+  WolfImage: b1ac981db51db03e12b0f614d0d5da1341fed27b
   WolfLocale: cc7921bc5d24c5e792603e7732c476385f969176
   WolfLog: 6329a08de6c099ca6ccea857127d9df2f74dfea3
   WolfNesting: 748afba6baed203799ea30ec8d71f2bfa46402aa
-  WolfNetwork: e341bec3507849b99d822d9f9c6767f2b4288b41
-  WolfNumerics: b8da8b6bfd8fe20825c727a0a67f324e6f60e23c
+  WolfNetwork: fbf0b4569e19674a5d30b790c014a5e997965fde
+  WolfNumerics: b31de2e54d6d5fd318b08124a2548a1be84c13c0
   WolfOSBridge: 6c3c6be3993a8c38db0dc2ab2d7fc9e98ec4938d
   WolfPaths: 241f91474cc47e1c8d0d9b2e330e7508cf2b321c
-  WolfPipe: 13f96a573eb084aa343b6c971f6dbba2fcf73287
+  WolfPipe: 44a77bc1282914d9aa09d072a948077faa90b6ca
   WolfPubSub: 9a29c3cf6c3ec1f70054febb22a612afcded5d9b
-  WolfSec: d5f6f34c98a3b76fb4be7c07df0ba391fda93bf2
-  WolfStrings: df8b7406fe1c7fcd6efa1cddf5882647477d0677
-  WolfViewControllers: 05eba5c1084f32f63ae0431932bafdb69782fc6b
-  WolfViews: 3ff24e45524ccd999c08ac7c4f0a876b40ba3024
+  WolfSec: c2d854aea53474359c5ebe0053e8df541a5c8389
+  WolfStrings: da93adf75ddc98609744beaf5f3c2bdb1e85d1a4
+  WolfViewControllers: 8248fce04f9edfd3650c2ca2efb8735184fadcda
+  WolfViews: 32fd36a163d5c8a8caeaacdb42f28c905b52e49a
   WolfWith: 46dbfeaa023972bb82387740ca38c976bc65fbac
 
-PODFILE CHECKSUM: 3efb4385a7a376212c65430e29b7cb2aa39da746
+PODFILE CHECKSUM: bc87c81cc1d9c8e03b6841b5740e4b99e8a9829a
 
 COCOAPODS: 1.6.0.beta.1

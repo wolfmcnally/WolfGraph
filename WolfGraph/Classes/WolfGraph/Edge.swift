@@ -22,40 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import WolfFoundation
 
 /// An edge, part of a generalized graph structure
 public struct Edge: Hashable, Codable, Comparable {
     /// A unique ID assigned to an edge
-    public struct ID: Codable, Hashable, CustomStringConvertible, Comparable {
-        private let uuid: UUID
-
-        init() {
-            uuid = UUID()
-        }
-
-        init<T>(using generator: inout T) where T: RandomNumberGenerator {
-            uuid = UUID.random(using: &generator)
-        }
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            uuid = try container.decode(UUID.self)
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.singleValueContainer()
-            try container.encode(uuid)
-        }
-
-        public var description: String {
-            return uuid.description
-        }
-
-        public static func < (lhs: ID, rhs: ID) -> Bool {
-            return lhs.uuid < rhs.uuid
-        }
-    }
+    public typealias ID = Tagged<Edge, UUID>
 
     /// The unique ID of this edge.
     public let id: ID
@@ -63,22 +35,23 @@ public struct Edge: Hashable, Codable, Comparable {
     var tailID: Vertex.ID
     var headID: Vertex.ID
 
+    private init(uuid: UUID, from tail: Vertex, to head: Vertex) {
+        id = ID(rawValue: uuid)
+        tailID = tail.id
+        headID = head.id
+        attributes = Attributes()
+    }
+
     /// Creates a new instance with a unique ID pointing from `tail` to `head`.
     public init(from tail: Vertex, to head: Vertex) {
-        id = ID()
-        attributes = Attributes()
-        self.tailID = tail.id
-        self.headID = head.id
+        self.init(uuid: UUID(), from: tail, to: head)
     }
 
     /// Creates a new instance pointing from `tail` to `head`
     /// with an ID produced by the provided random number
     /// generator.
     public init<T>(from tail: Vertex, to head: Vertex, using generator: inout T) where T: RandomNumberGenerator {
-        id = ID(using: &generator)
-        attributes = Attributes()
-        self.tailID = tail.id
-        self.headID = head.id
+        self.init(uuid: UUID.random(using: &generator), from: tail, to: head)
     }
 
     private enum CodingKeys: String, CodingKey {

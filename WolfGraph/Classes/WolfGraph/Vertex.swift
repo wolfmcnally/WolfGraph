@@ -23,67 +23,45 @@
 //  THE SOFTWARE.
 
 import Foundation
+import WolfFoundation
 
-func < (lhs: UUID, rhs: UUID) -> Bool {
-    var lhsUUID = lhs.uuid
-    var rhsUUID = rhs.uuid
-    var lhsArray: [UInt8] {
-        return [UInt8](UnsafeBufferPointer(start: &lhsUUID.0, count: MemoryLayout.size(ofValue: lhsUUID)))
+extension UUID: Comparable {
+    public static func < (lhs: UUID, rhs: UUID) -> Bool {
+        var lhsUUID = lhs.uuid
+        var rhsUUID = rhs.uuid
+        var lhsArray: [UInt8] {
+            return [UInt8](UnsafeBufferPointer(start: &lhsUUID.0, count: MemoryLayout.size(ofValue: lhsUUID)))
+        }
+        var rhsArray: [UInt8] {
+            return [UInt8](UnsafeBufferPointer(start: &rhsUUID.0, count: MemoryLayout.size(ofValue: rhsUUID)))
+        }
+        return lhsArray.lexicographicallyPrecedes(rhsArray)
     }
-    var rhsArray: [UInt8] {
-        return [UInt8](UnsafeBufferPointer(start: &rhsUUID.0, count: MemoryLayout.size(ofValue: rhsUUID)))
-    }
-    return lhsArray.lexicographicallyPrecedes(rhsArray)
 }
 
 /// A vertex, part of a generalized graph structure
 public struct Vertex: Hashable, Codable, Comparable {
     /// A unique ID assigned to a vertex
-    public struct ID: Codable, Hashable, CustomStringConvertible, Comparable {
-        private let uuid: UUID
-
-        init() {
-            uuid = UUID()
-        }
-
-        init<T>(using generator: inout T) where T: RandomNumberGenerator {
-            uuid = UUID.random(using: &generator)
-        }
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            uuid = try container.decode(UUID.self)
-        }
-
-        public func encode(to encoder: Encoder) throws {
-            var container = encoder.singleValueContainer()
-            try container.encode(uuid)
-        }
-
-        public var description: String {
-            return uuid.description
-        }
-
-        public static func < (lhs: ID, rhs: ID) -> Bool {
-            return lhs.uuid < rhs.uuid
-        }
-    }
+    public typealias ID = Tagged<Vertex, UUID>
 
     /// The unique ID of this vertex.
     public let id: ID
     var attributes: Attributes
 
+    private init(uuid: UUID) {
+        id = ID(rawValue: uuid)
+        attributes = Attributes()
+    }
+
     /// Creates a new instance with a unique ID.
     public init() {
-        id = ID()
-        attributes = Attributes()
+        self.init(uuid: UUID())
     }
 
     /// Creates a new instance with an ID produced by
     /// the provided random number generator.
     public init<T>(using generator: inout T) where T: RandomNumberGenerator {
-        id = ID(using: &generator)
-        attributes = Attributes()
+        self.init(uuid: UUID.random(using: &generator))
     }
 
     private enum CodingKeys: String, CodingKey {
