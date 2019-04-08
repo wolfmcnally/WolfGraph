@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 
 import Foundation
-import ExtensibleEnumeratedName
+import WolfCore
 
 public struct AttributeName: ExtensibleEnumeratedName, Codable {
     public let rawValue: String

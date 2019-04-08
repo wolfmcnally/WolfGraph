@@ -8,7 +8,7 @@
 import Foundation
 import WolfGeometry
 import WolfColor
-import ExtensibleEnumeratedName
+import WolfCore
 
 public protocol GraphAttribute { }
 

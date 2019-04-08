@@ -1,5 +1,5 @@
 //
-//  Vertex.swift
+//  Edge.swift
 //  WolfGraph
 //
 //  Created by Wolf McNally on 9/13/18.
@@ -22,57 +22,51 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
-import WolfFoundation
+import WolfCore
 
-extension UUID: Comparable {
-    public static func < (lhs: UUID, rhs: UUID) -> Bool {
-        var lhsUUID = lhs.uuid
-        var rhsUUID = rhs.uuid
-        var lhsArray: [UInt8] {
-            return [UInt8](UnsafeBufferPointer(start: &lhsUUID.0, count: MemoryLayout.size(ofValue: lhsUUID)))
-        }
-        var rhsArray: [UInt8] {
-            return [UInt8](UnsafeBufferPointer(start: &rhsUUID.0, count: MemoryLayout.size(ofValue: rhsUUID)))
-        }
-        return lhsArray.lexicographicallyPrecedes(rhsArray)
-    }
-}
+/// An edge, part of a generalized graph structure
+public struct Edge: Hashable, Codable, Comparable {
+    /// A unique ID assigned to an edge
+    public typealias ID = Tagged<Edge, UUID>
 
-/// A vertex, part of a generalized graph structure
-public struct Vertex: Hashable, Codable, Comparable {
-    /// A unique ID assigned to a vertex
-    public typealias ID = Tagged<Vertex, UUID>
-
-    /// The unique ID of this vertex.
+    /// The unique ID of this edge.
     public let id: ID
     var attributes: Attributes
+    var tailID: Vertex.ID
+    var headID: Vertex.ID
 
-    private init(uuid: UUID) {
+    private init(uuid: UUID, from tail: Vertex, to head: Vertex) {
         id = ID(rawValue: uuid)
+        tailID = tail.id
+        headID = head.id
         attributes = Attributes()
     }
 
-    /// Creates a new instance with a unique ID.
-    public init() {
-        self.init(uuid: UUID())
+    /// Creates a new instance with a unique ID pointing from `tail` to `head`.
+    public init(from tail: Vertex, to head: Vertex) {
+        self.init(uuid: UUID(), from: tail, to: head)
     }
 
-    /// Creates a new instance with an ID produced by
-    /// the provided random number generator.
-    public init<T>(using generator: inout T) where T: RandomNumberGenerator {
-        self.init(uuid: UUID.random(using: &generator))
+    /// Creates a new instance pointing from `tail` to `head`
+    /// with an ID produced by the provided random number
+    /// generator.
+    public init<T>(from tail: Vertex, to head: Vertex, using generator: inout T) where T: RandomNumberGenerator {
+        self.init(uuid: UUID.random(using: &generator), from: tail, to: head)
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id = "vertex"
+        case id = "edge"
         case attributes
+        case tailID = "tail"
+        case headID = "head"
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(ID.self, forKey: .id)
         attributes = try container.decodeIfPresent(Attributes.self, forKey: .attributes) ?? Attributes()
+        tailID = try container.decode(Vertex.ID.self, forKey: .tailID)
+        headID = try container.decode(Vertex.ID.self, forKey: .headID)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -81,9 +75,11 @@ public struct Vertex: Hashable, Codable, Comparable {
         if !attributes.isEmpty {
             try container.encode(attributes, forKey: .attributes)
         }
+        try container.encode(tailID, forKey: .tailID)
+        try container.encode(headID, forKey: .headID)
     }
 
-    public static func == (lhs: Vertex, rhs: Vertex) -> Bool {
+    public static func == (lhs: Edge, rhs: Edge) -> Bool {
         return lhs.id == rhs.id
     }
 
@@ -91,16 +87,16 @@ public struct Vertex: Hashable, Codable, Comparable {
         hasher.combine(id)
     }
 
-    public static func < (lhs: Vertex, rhs: Vertex) -> Bool {
+    public static func < (lhs: Edge, rhs: Edge) -> Bool {
         return lhs.id < rhs.id
     }
 }
 
-extension Vertex: CustomStringConvertible {
+extension Edge: CustomStringConvertible {
     public var description: String {
-        if let concept = concept {
-            return "\(type(of: self))(\(id), \"\(concept)\")"
+        if let relation = relation {
+            return "\(type(of: self))(\(id), \(tailID) -\(relation)-> \(headID))"
         }
-        return "\(type(of: self))(\(id))"
+        return "\(type(of: self))(\(id) \(tailID) --> \(headID))"
     }
 }

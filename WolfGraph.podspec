@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'WolfGraph'
-    s.version          = '0.2.0'
+    s.version          = '0.2.1'
     s.summary          = 'A Swift-based general graph structure with value semantics.'
 
     s.homepage         = 'https://github.com/wolfmcnally/WolfGraph'
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.author           = { 'Wolf McNally' => 'wolf@wolfmcnally.com' }
     s.source           = { :git => 'https://github.com/wolfmcnally/WolfGraph.git', :tag => s.version.to_s }
 
-    s.source_files = 'WolfGraph/Classes/**/*'
+    s.source_files = 'Sources/WolfGraph/**/*'
 
     s.swift_version = '5.0'
 
@@ -18,10 +18,7 @@ Pod::Spec.new do |s|
 
     s.module_name = 'WolfGraph'
 
-    s.dependency 'ExtensibleEnumeratedName'
-    s.dependency 'WolfNumerics'
+    s.dependency 'WolfCore'
     s.dependency 'WolfGeometry'
     s.dependency 'WolfColor'
-    s.dependency 'WolfWith'
-    s.dependency 'WolfFoundation'
 end

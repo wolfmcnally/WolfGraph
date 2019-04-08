@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import WolfNumerics
+import WolfCore
 import WolfGeometry
 
 extension AttributeName {
