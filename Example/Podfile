@@ -4,21 +4,7 @@ platform :ios, '12.0'
 
 target 'WolfGraph_Example' do
   pod 'WolfGraph', :path => '../'
-  pod 'WolfViews', :path => '../../WolfViews'
-  pod 'WolfViewControllers', :path => '../../WolfViewControllers'
-  pod 'WolfNumerics', :path => '../../WolfNumerics'
-  pod 'WolfFoundation', :path => '../../WolfFoundation'
-  pod 'WolfColor', :path => '../../WolfColor'
-  pod 'WolfGeometry', :path => '../../WolfGeometry'
-  pod 'BezierKit', :path => '../../BezierKit'
-  pod 'VectorBoolean', :path => '../../VectorBoolean'
-  pod 'WolfPaths', :path => '../../WolfPaths'
-  pod 'WolfPipe', :path => '../../WolfPipe'
-  pod 'WolfConcurrency', :path => '../../WolfConcurrency'
-  pod 'WolfSec', :path => '../../WolfSec'
-  pod 'WolfImage', :path => '../../WolfImage'
-  pod 'WolfNetwork', :path => '../../WolfNetwork'
-  pod 'WolfCache', :path => '../../WolfCache'
+  pod 'WolfKit' #, :path => '../../WolfViews'
 
   target 'WolfGraph_Tests' do
     inherit! :search_paths

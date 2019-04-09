@@ -7,7 +7,7 @@
 
 import Foundation
 import WolfCore
-import WolfGeometry
+import WolfGraphics
 
 extension AttributeName {
     public static let position = AttributeName("position")

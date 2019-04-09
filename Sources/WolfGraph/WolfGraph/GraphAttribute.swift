@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import WolfGeometry
-import WolfColor
+import WolfGraphics
 import WolfCore
 
 public protocol GraphAttribute { }

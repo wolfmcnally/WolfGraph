@@ -7,7 +7,7 @@
 
 import Foundation
 import WolfCore
-import WolfGeometry
+import WolfGraphics
 
 public func generateRandomGeometricGraph(vertexCount: Int, radius: Double) -> Graph {
 

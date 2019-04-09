@@ -23,8 +23,7 @@
 //  THE SOFTWARE.
 
 import Foundation
-import WolfGeometry
-import WolfColor
+import WolfGraphics
 
 struct AttributeValue: Codable, CustomStringConvertible {
     let value: Any

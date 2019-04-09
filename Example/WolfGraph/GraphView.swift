@@ -6,15 +6,7 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import WolfViews
-import WolfGraph
-import WolfImage
-import WolfGeometry
-import WolfNumerics
-import WolfLog
-import WolfColor
-import WolfPipe
-import WolfPaths
+import WolfKit
 
 class GraphView: View {
     override func setup() {

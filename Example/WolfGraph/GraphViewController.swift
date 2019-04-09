@@ -6,14 +6,7 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import WolfGraph
-import WolfNesting
-import WolfAutolayout
-import WolfNumerics
-import WolfConcurrency
-import WolfPipe
-import WolfViews
-import WolfWith
+import WolfKit
 
 class GraphViewController: AppViewController {
     private var tapAction: GestureRecognizerAction?
@@ -49,7 +42,7 @@ class GraphViewController: AppViewController {
         super.build()
 
         view.backgroundColor = UIColor(white: 0.05, alpha: 1.0)
-        
+
         view => [
             stackView => [
                 seedLabel,
